@@ -37,4 +37,4 @@ jobs:
           npm ci
       
       - name: Build
-        run: npm run build -- --environment production
+        run: npm run build -- --configuration production
