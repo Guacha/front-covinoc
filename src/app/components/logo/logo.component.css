@@ -1,0 +1,3 @@
+.filter {
+  filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(331deg) brightness(108%) contrast(100%);
+}
