@@ -8,10 +8,11 @@
         <th scope="col" class="py-3 px-6">Telephone</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="!loading; else loadingTable">
       <tr
         *ngFor="let user of users"
         class="bg-white border-b-2 hover:bg-green-100"
+        (click)="emitUserSelected(user)"
       >
         <th
           scope="row"
@@ -30,6 +31,24 @@
         <td colspan="3" class="text-center"></td>
       </tr>
     </tbody>
+    <ng-template #loadingTable>
+      <tbody>
+        <tr *ngFor="let count of skeletonRow">
+          <th
+            scope="row"
+            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap"
+          >
+            <div class="flex bg-slate-300 h-5 animate-pulse rounded-md"></div>
+          </th>
+          <td class="py-4 px-6">
+            <div class="flex bg-slate-300 h-5 animate-pulse rounded-md"></div>
+          </td>
+          <td class="py-4 px-6">
+            <div class="flex bg-slate-300 h-4 animate-pulse rounded-md"></div>
+          </td>
+        </tr>
+      </tbody>
+    </ng-template>
   </table>
   <button class="mt-10 text-white text-xl p-2 w-full bg-green-500 rounded-md">
     Agregar Usuario

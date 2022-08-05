@@ -8,6 +8,7 @@ import { UpdateFormComponent } from './components/update-form/update-form.compon
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { AppContainerComponent } from './components/app-container/app-container.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { LogoComponent } from './components/logo/logo.component';
     HeaderComponent,
     FooterComponent,
     LogoComponent,
+    AppContainerComponent,
   ],
   imports: [BrowserModule, HttpClientModule],
   providers: [],

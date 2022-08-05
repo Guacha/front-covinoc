@@ -1,6 +1,6 @@
-<form action="#" method="POST">
+<form *ngIf="user !== undefined; else noUser" action="#" method="POST">
   <div class="">
-    <div class="px-4 py-5space-y-6 sm:p-6">
+    <div class="px-4 py-5 space-y-6 sm:p-6">
       <div class="grid grid-cols-3 gap-6">
         <div class="col-span-3">
           <label for="name" class="text-md font-medium text-gray-700">
@@ -28,3 +28,11 @@
     </div>
   </div>
 </form>
+<ng-template #noUser>
+  <div class="flex px-4 py-5 space-y-6 sm:p-6 text-center h-full items-center">
+    <p class="text-3xl">
+      Aún no has elegido un usuario. Elige un usuario en la tabla para editar su
+      info!
+    </p>
+  </div>
+</ng-template>
