@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { User } from '../../types/User.type';
 import { UserService } from '../../services/user.service';
 
@@ -11,7 +11,8 @@ export class TableComponent implements OnInit {
   users: User[] = [];
   loading: boolean = false;
   skeletonRow: number[] = Array(5).fill(0);
-  @Output() selectedUser = new EventEmitter<User>();
+  @Output() selectedUserEvent = new EventEmitter<User>();
+  @Input() selectedUser?: User;
 
   constructor(private userService: UserService) {}
 
@@ -23,6 +24,10 @@ export class TableComponent implements OnInit {
     });
   }
   emitUserSelected(user: User) {
-    this.selectedUser.emit(user);
+    this.selectedUserEvent.emit(user);
+  }
+
+  addUserClicked() {
+    alert('TBD');
   }
 }

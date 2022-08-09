@@ -1,10 +1,16 @@
 <div class="grid grid-cols-3">
   <div class="col-span-2 border-r-2 border-green-500">
     <div class="mt-5 p-10">
-      <app-table></app-table>
+      <app-table
+        [selectedUser]="selectedUser"
+        (selectedUserEvent)="userWasSelected($event)"
+      ></app-table>
     </div>
   </div>
   <div class="col-span-1 border-l-2 border-green-500">
-    <app-update-form (selectedUser)="userWasSelected($event)"></app-update-form>
+    <app-update-form
+      [selectedUser]="selectedUser"
+      (formSubmitted)="clearSelection()"
+    ></app-update-form>
   </div>
 </div>

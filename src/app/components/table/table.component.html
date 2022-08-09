@@ -11,8 +11,12 @@
     <tbody *ngIf="!loading; else loadingTable">
       <tr
         *ngFor="let user of users"
-        class="bg-white border-b-2 hover:bg-green-100"
+        class="bg-white border-b-2"
         (click)="emitUserSelected(user)"
+        [ngClass]="{
+          'bg-green-300': user.id === selectedUser?.id,
+          'hover:bg-green-100': user.id !== selectedUser?.id
+        }"
       >
         <th
           scope="row"
@@ -50,7 +54,10 @@
       </tbody>
     </ng-template>
   </table>
-  <button class="mt-10 text-white text-xl p-2 w-full bg-green-500 rounded-md">
+  <button
+    class="mt-10 text-white text-xl p-2 w-full bg-green-500 rounded-md"
+    (click)="addUserClicked()"
+  >
     Agregar Usuario
   </button>
 </div>

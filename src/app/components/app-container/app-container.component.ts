@@ -15,6 +15,10 @@ export class AppContainerComponent implements OnInit {
 
   userWasSelected(user?: User) {
     this.selectedUser = user;
-    console.log(this.selectedUser);
+  }
+
+  clearSelection() {
+    window.location.reload();
+    this.ngOnInit();
   }
 }

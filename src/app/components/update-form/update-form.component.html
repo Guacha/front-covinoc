@@ -1,4 +1,10 @@
-<form *ngIf="user !== undefined; else noUser" action="#" method="POST">
+<form
+  #editUser="ngForm"
+  (ngSubmit)="onSubmit(editUser.value)"
+  *ngIf="user !== undefined; else noUser"
+  action="#"
+  method="POST"
+>
   <div class="">
     <div class="px-4 py-5 space-y-6 sm:p-6">
       <div class="grid grid-cols-3 gap-6">
@@ -8,17 +14,49 @@
           </label>
           <div class="mt-2 rounded-md shadow-sm">
             <input
+              [ngModel]="user.name"
               type="text"
               name="name"
               id="name"
               class="border-b-green-500 focus:ring-green-500 focus:border-green-500 rounded-none rounded-r-md w-full"
               placeholder="Enter Name"
+              value="{{ user.name }}"
+            />
+          </div>
+        </div>
+        <div class="col-span-3">
+          <label for="id" class="text-md font-medium text-gray-700"> ID </label>
+          <div class="mt-2 rounded-md shadow-sm">
+            <input
+              [ngModel]="user.id"
+              type="text"
+              name="id"
+              id="id"
+              class="border-b-green-500 focus:ring-green-500 focus:border-green-500 rounded-none rounded-r-md w-full"
+              placeholder="Enter ID"
+              value="{{ user.id }}"
+            />
+          </div>
+        </div>
+        <div class="col-span-3">
+          <label for="tel" class="text-md font-medium text-gray-700">
+            Telephone
+          </label>
+          <div class="mt-2 rounded-md shadow-sm">
+            <input
+              [ngModel]="user.tel"
+              type="text"
+              name="tel"
+              id="tel"
+              class="border-b-green-500 focus:ring-green-500 focus:border-green-500 rounded-none rounded-r-md w-full"
+              placeholder="Enter Telephone"
+              value="{{ user.tel }}"
             />
           </div>
         </div>
       </div>
     </div>
-    <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+    <div class="px-4 py-3 text-center sm:px-6">
       <button
         type="submit"
         class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"

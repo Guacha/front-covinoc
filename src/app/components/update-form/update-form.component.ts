@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 import { User } from '../../types/User.type';
 
 @Component({
@@ -7,9 +8,15 @@ import { User } from '../../types/User.type';
   styleUrls: ['./update-form.component.css'],
 })
 export class UpdateFormComponent implements OnInit {
-  user?: User;
+  @Input('selectedUser') user?: User;
+  @Output('formSubmitted') formSubmitted = new EventEmitter<any>();
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {}
+
+  onSubmit(data: any) {
+    this.userService.updateUser(data, this.user?.id);
+    this.formSubmitted.emit();
+  }
 }
